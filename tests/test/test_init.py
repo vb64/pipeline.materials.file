@@ -8,6 +8,12 @@ from . import TestBase
 class TestInit(TestBase):
     """Tests init module."""
 
+    def test_float2str(self):
+        """Check float2str function."""
+        from pipeline_materials_file import float2str
+
+        assert float2str(None) == ''
+
     def test_key(self):
         """Check key property."""
         from pipeline_materials_file import Material, PipeType
@@ -33,6 +39,8 @@ class TestInit(TestBase):
           Row.as_weld(12000),
           Row.as_thick(12010, 110),
           Row.as_weld(24000),
+          Row.as_thick(12010, 110),
+          Row.as_weld(36000),
         ]
 
         warnings = []
@@ -42,6 +50,12 @@ class TestInit(TestBase):
         assert not warnings
 
         data.to_csv(self.build('material_out.csv'))
+
+        pipes = list(deftable.get_tubes())
+        assert len(pipes) == 3
+        material = data.for_pipe(pipes[0])
+        assert material.thick == 105
+        assert material.pipe_count == 1
 
     def test_from_csv(self):
         """Class from_csv method."""
@@ -59,3 +73,6 @@ class TestInit(TestBase):
         assert material.thick > 0
         assert material.steel_class == ''
         assert material.pipe_count > 0
+
+        materials = Materials.from_csv(self.fixture('not_exist.csv'))
+        assert not materials.data

@@ -44,7 +44,7 @@ class Material(PipeMaterial):  # pylint: disable=too-many-instance-attributes
     DFLT_NAME = "Steel"
     DFLT_SMYS = 295
     DFLT_SMTS = 405
-    DFLT_TOUG = None
+    DFLT_TOUG = 64
 
     def __init__(self):
         """Make new material."""
