@@ -6,8 +6,8 @@ import pytest
 
 def path_setup():
     """Setup sys path."""
-    test_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    sys.path.insert(1, os.path.join(test_dir, 'pipeline_materials_file'))
+    test_dir = os.path.dirname(os.path.abspath(__file__))
+    sys.path.insert(1, test_dir)
 
 
 @pytest.fixture(scope="session", autouse=True)
