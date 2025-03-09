@@ -1,2 +1,3 @@
-pipeline-material
-pipeline-csv
+pipeline-material==1.0
+pipeline-csv==1.16.1
+toml==0.10.2
