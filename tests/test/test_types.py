@@ -1,12 +1,12 @@
-"""Module init tests.
+"""Module types tests.
 
-make test T=test_init.py
+make test T=test_types.py
 """
 from . import TestBase
 
 
-class TestInit(TestBase):
-    """Tests init module."""
+class TestTypes(TestBase):
+    """Tests types module."""
 
     def test_float2str(self):
         """Check float2str function."""
