@@ -2,7 +2,7 @@
 
 make test T=test_toml.py
 """
-# from pipeline_material import PipeMaterial
+from pipeline_material import PipeMaterial
 from . import TestBase
 
 
@@ -19,3 +19,10 @@ class TestToml(TestBase):
         assert toml.default_material is None
         assert not toml.materials
         assert toml.get_material(PipeType.DIRECT, 100, '') is None
+
+        steel = PipeMaterial("Steel", 295)
+        assert steel.smys == 295
+        toml = MaterialsToml(steel)
+        assert toml.default_material.name == "Steel"
+        assert len(toml.materials) == 1
+        assert toml.get_material(PipeType.DIRECT, 100, '').name == "Steel"
