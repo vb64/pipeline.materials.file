@@ -1,18 +1,12 @@
-"""Module init tests.
+"""Module csv tests.
 
-make test T=test_init.py
+make test T=test_csv.py
 """
 from . import TestBase
 
 
-class TestInit(TestBase):
-    """Tests init module."""
-
-    def test_float2str(self):
-        """Check float2str function."""
-        from pipeline_materials_file.types import float2str
-
-        assert float2str(None) == ''
+class TestCsv(TestBase):
+    """Tests csv module."""
 
     def test_key(self):
         """Check key property."""
