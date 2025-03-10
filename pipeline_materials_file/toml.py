@@ -7,9 +7,17 @@ class MaterialsToml:
     file_name = "materials.toml"
     encoding = 'utf-8'
 
-    def __init__(self):
+    def __init__(self, default_material):
         """Make new material list."""
+        self.default_material = default_material
+
         self.materials = {}
-        self.default = None
-        self.pipe_types = {}
-        self.pipe_numbers = {}
+        if default_material:
+            self.materials[default_material.name] = default_material
+
+        # self.pipe_types = {}
+        # self.pipe_numbers = {}
+
+    def get_material(self, _pipe_type, _pipe_thick, _pipe_number):
+        """Return material for pipe with given properties."""
+        return self.default_material
